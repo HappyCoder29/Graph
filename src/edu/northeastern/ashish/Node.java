@@ -8,6 +8,8 @@ public class Node {
     private Node(){}
     public String name;
     public boolean visited;
+    public int rank;
+    public Node parent;
 
     public List<Edge>  listEdges = null;
 
@@ -15,6 +17,8 @@ public class Node {
         this.name = name;
         this.listEdges = new LinkedList<Edge>();
         this.visited = false;
+        this.rank = 0;
+        this.parent = this;
     }
 
     public void addEdge(String endNode, int weight ){
@@ -42,6 +46,15 @@ public class Node {
 
         for(int i = 0 ; i < listEdges.size(); i ++){
             neighbours.add(listEdges.get(i).endNode);
+        }
+        return  neighbours;
+    }
+
+    public List<Edge> getListEdges(){
+        List<Edge> neighbours = new LinkedList<Edge>();
+
+        for(int i = 0 ; i < listEdges.size(); i ++){
+            neighbours.add(listEdges.get(i));
         }
         return  neighbours;
     }
